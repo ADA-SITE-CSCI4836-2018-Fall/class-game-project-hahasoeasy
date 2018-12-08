@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class applecollecting : MonoBehaviour {
-    public int score=0;
-	// Use this for initialization
-	void Start () {
-		
+    public int apple;
+
+    private LevelManager gameLevelManager;
+    // Use this for initialization
+
+    void Start () {
+        gameLevelManager = FindObjectOfType<LevelManager>();
 	}
 	
 	// Update is called once per frame
@@ -15,7 +18,12 @@ public class applecollecting : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
-        score = score + 1;
+        if (collision.tag=="malikmamed"){
+            gameLevelManager.AddApples(apple);
+            Destroy(gameObject);
+
+        }
+
+       
     }
 }
